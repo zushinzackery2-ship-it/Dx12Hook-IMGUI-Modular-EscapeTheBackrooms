@@ -1,0 +1,36 @@
+name: Build (Windows)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build on Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run build script (build_modular.bat)
+        shell: cmd
+        run: |
+          if exist build_modular.bat (
+            .\build_modular.bat
+          ) else (
+            echo "build_modular.bat not found"
+            exit 1
+          )
+
+      - name: Gather build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            **\*.dll
+            **\*.exe
+            **\bin\**
+            **\Release\**
