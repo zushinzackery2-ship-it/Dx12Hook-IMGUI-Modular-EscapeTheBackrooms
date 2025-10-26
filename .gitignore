@@ -1,0 +1,40 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.vc.db
+*.ipch
+ipch/
+
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+Build/
+Binaries/
+DerivedDataCache/
+Saved/
+Intermediate/
+
+# Visual Studio Code / JetBrains
+.vscode/
+.idea/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Logs and temp
+*.log
+*.tmp
+*.cache
+
+# Other
+*.DS_Store
+
+# Optional: large generated SDK folders you may want to ignore locally
+# CppSDK/SDK/*.cpp
