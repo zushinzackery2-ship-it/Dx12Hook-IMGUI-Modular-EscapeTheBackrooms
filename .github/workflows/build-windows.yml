@@ -1,10 +1,9 @@
 name: Build (Windows)
 
+# NOTE: changed to manual trigger to avoid automatic runs on every push/PR.
+# Use the Actions UI -> Run workflow to trigger, or re-enable push/pr triggers if desired.
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch: {}
 
 jobs:
   build:
