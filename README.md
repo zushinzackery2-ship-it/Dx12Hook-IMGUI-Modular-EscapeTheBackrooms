@@ -62,6 +62,18 @@ D3D12-Hook-ImGui/
 # 该脚本会自动配置并编译项目（包含 CppSDK），并输出 DLL（例如 `Etb_Esp.dll`）。
 ```
 
+注意：`build_modular.bat` 里包含一些针对本地环境的硬编码项（例如 `vcvars64.bat` 的绝对路径、输出目录 `%OUTDIR%`、以及编译器选项 `/MD` 或 `/MT` 等）。在不同的机器上你通常需要根据本地 Visual Studio 安装路径和偏好修改脚本：
+
+- 确认并修改 `call "D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"` 为你本机的 vcvars64 路径，或在 Developer Command Prompt 中直接运行脚本以避免路径问题。
+- 如需使用 MSBuild/VCXPROJ 的配置，请考虑将脚本改为调用：
+
+```
+msbuild d3d12imgui.sln /p:Configuration=Release /p:Platform=x64
+```
+
+- 注意命令行长度限制与编译并行性：脚本中以单条 `cl.exe` 编译大量源文件时可能遇到长度限制或速度问题，使用 `msbuild` 可更可靠并且使用项目文件中的设置（例如 CRT 选择 `/MT` vs `/MD`）。
+
+
 方式 2：使用 Visual Studio 手动编译
 
 ```
