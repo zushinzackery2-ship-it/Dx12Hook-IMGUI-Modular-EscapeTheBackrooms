@@ -16,7 +16,7 @@ if %ERRORLEVEL% NEQ 0 (
 echo === Build configuration: Release (Modular) ===
 echo === Compiling Etb_Esp.dll ===
 
-cl.exe /nologo /W0 /std:c++20 /EHsc /utf-8 /O2 /MD ^
+cl.exe /nologo /W0 /std:c++20 /EHsc /utf-8 /O2 /MT ^
   /D"NDEBUG" /D"_WINDOWS" /D"_USRDLL" /D"UNICODE" /D"_UNICODE" ^
   /I "%ROOT%" ^
   /I "%ROOT%\Core" ^
